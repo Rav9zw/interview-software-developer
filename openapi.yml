@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Interview exercise "Parking lot"
+  version: 0.0.1
+
+servers:
+  - url: https://www.smsapi.pl/kariera/
+
+paths:
+  /parking_lot/ticket:
+    post:
+      summary: Lets start your parking time.
+      tags:
+        - parking-lot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParkingTicket'
+      responses:
+        '200':
+          description: Start parking time response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParkingTicketResponse'
+
+
+  /parking_lot/board:
+    get:
+      summary: Show any free parking spot for each spot type and floor.
+      tags:
+        - parking-lot
+      responses:
+        '200':
+          description: Parking lot basic informations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParkingLotBoard'
+
+  /health:
+    get:
+      summary: Health check endpoint.
+      tags:
+        - parking-lot
+      responses:
+        '200':
+          description: Application is healthy
+
+
+components:
+  schemas:
+    ParkingTicket:
+      type: object
+      properties:
+        vehicle_type:
+          enum:
+            - car
+            - motorcycle
+            - bus
+
+    ParkingTicketResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        start_time:
+          type: string
+          format: date-time
+        to_pay:
+          type: number
+          format: double
+
+    ParkingLotBoard:
+      type: object
+      properties:
+        floors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParkingLotFloorFreeSpots'
+
+    ParkingLotFloorFreeSpots:
+      type: object
+      properties:
+        cars:
+          type: integer
+        motorcycles:
+          type: integer
+        buses:
+          type: integer
