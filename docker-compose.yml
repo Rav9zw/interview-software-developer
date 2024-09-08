@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./php
+      args:
+        TIMEZONE: Europe/Warsaw
+    restart: on-failure
+    volumes:
+      - ./scripts/src:/var/www/html
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=interview
+      - MYSQL_USERNAME=interview
+      - MYSQL_PASSWORD=interview-password
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_USERNAME=interview
+      - MYSQL_PASSWORD=interview-password
+      - MYSQL_ROOT_PASSWORD=password
+    healthcheck:
+      test: mysqladmin ping -u $$MYSQL_USERNAME --password=$$MYSQL_PASSWORD -h 127.0.0.1
+      timeout: 20s
+      retries: 10
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./scripts/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
