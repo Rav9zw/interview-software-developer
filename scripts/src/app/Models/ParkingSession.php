@@ -11,8 +11,7 @@ class ParkingSession extends Model
     use HasFactory;
     use Notifiable;
 
-    protected $fillable = ['parking_spot_id', 'vehicle_id'];
-
+    protected $fillable = ['parking_spot_id', 'vehicle_id', 'email', 'start_time', 'end_time'];
 
 
     public function parkingSpot()

@@ -23,12 +23,16 @@ class ParkingSessionFactory extends Factory
         $parkingSpot = ParkingSpot::where('spot_size', $vehicleSize)->inRandomOrder()->first();
         $vehicle = Vehicle::where('size', $vehicleSize)->inRandomOrder()->first();
 
+        $start = $this->faker->dateTimeBetween('-3 day', 'now');
+        $end = clone $start;
+        $end->modify('+1 hour');
+
         return [
             'vehicle_id' => $vehicle->id,
-            'parking_spot_id' => $parkingSpot->id,
+            'parking_spot_id' => $parkingSpot->id??null,
             'email' => 'rav86pl@hotmail.com',
-            'start_time' => $this->faker->dateTimeBetween('-3 day', 'now'),
-            'end_time' => $this->faker->optional()->dateTimeBetween('now', '+3 day'),
+            'start_time' => $start,
+            'end_time' => $end,
         ];
     }
 }

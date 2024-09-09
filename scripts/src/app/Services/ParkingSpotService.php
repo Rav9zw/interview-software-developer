@@ -30,11 +30,10 @@ class ParkingSpotService
             foreach ($spots as $spot) {
                 $floor = 'Floor: ' . $spot['floor'];
                 if (!isset($board[$floor])) {
-                    $board[$floor] = [];
+                    $vehicleTypes = array_keys($this->vehicleStrategies);
+                    $board[$floor] = array_fill_keys($vehicleTypes, 0);
                 }
-                if (!isset($board[$floor][$type])) {
-                    $board[$floor][$type] = 0;
-                }
+
                 $board[$floor][$type]++;
             }
         }
@@ -66,8 +65,8 @@ class ParkingSpotService
     {
         return ParkingSpot::where('spot_number', $spotNumber)
             ->whereDoesntHave('parkingSession', function ($query) {
-                $query->whereNull('end_time');
-            })->exist();
+                $query->where('end_time', '>', now());
+            })->exists();
     }
 
 }

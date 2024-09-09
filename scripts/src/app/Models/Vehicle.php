@@ -9,6 +9,7 @@ class Vehicle extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['type', 'size'];
 
     public function parkingSession()
     {

@@ -2,23 +2,31 @@
 
 namespace app\Http\Controllers;
 
+use App\Http\Requests\CreateTicketRequest;
 use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
 use App\Models\Vehicle;
 use App\Notifications\ParkingSessionEnding;
 use app\Services\ParkingSpotService;
+use App\Services\TicketValidatorService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
+
 
 class ParkingLotController extends Controller
 {
     private ParkingSpotService $parkingSpotService;
+    private TicketValidatorService $ticketValidatorService;
 
-    public function __construct(ParkingSpotService $parkingSpotService)
+
+    public function __construct(ParkingSpotService $parkingSpotService, TicketValidatorService $ticketValidatorService
+    )
     {
         $this->parkingSpotService = $parkingSpotService;
+        $this->ticketValidatorService = $ticketValidatorService;
+
+
     }
 
     public function getParkingBoard(): JsonResponse
@@ -26,55 +34,37 @@ class ParkingLotController extends Controller
         return response()->json($this->parkingSpotService->getBoard(), 200);
     }
 
-    public function createTicket(Request $request): JsonResponse
+
+    public function createTicket(CreateTicketRequest $request): JsonResponse
     {
+        $result =$this->ticketValidatorService->validateTicket($request);
 
-        $validTypes = Vehicle::pluck('type')->toArray();
-
-        $validator = Validator::make($request->all(), [
-            'vehicle_type' => ['required', Rule::in($validTypes)],
-            'spot_number' => 'required|string',
-
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+        if (isset($result['error'])) {
+            return response()->json(['error' => $result['error']], $result['status']);
         }
+        $parkingSpot = ParkingSpot::where('spot_number', $request->spot_number)->firstOrFail();
+        $vehicle = Vehicle::where('type', $request->vehicle_type)->firstOrFail();
 
-        $parkingSpot = ParkingSpot::where('spot_number', $request->spot_number)
-            ->first();
+        try {
+            $ticket = ParkingSession::create([
+                'vehicle_id' => $vehicle->id,
+                'parking_spot_id' => $parkingSpot->id,
+                'email' => $request->get('email'),
+                'start_time' => now(),
+                'end_time' => now()->modify('+1 hour'),
+            ]);
 
-        if (!$parkingSpot) {
-            return response()->json(['error' => 'Parking spot not found.'], 404);
+
+        } catch (\Exception $e) {
+            Log::error('Session Create error: ' . $e->getMessage());
+            return response()->json(['error' => 'Error creating parking session'], 500);
         }
-
-        $isAvailable = $this->parkingSpotService->checkAvailabilityByNumber($request->spot_number);
-
-        if (!$isAvailable) {
-            return response()->json(['error' => 'Parking spot is already occupied.'], 400);
-        }
-
-        $vehicle = Vehicle::where('type', $request->vehicle_type)->first();
-
-        if (!$vehicle) {
-            return response()->json(['error' => 'Vehicle type not found.'], 404);
-        }
-
-        $ticket = ParkingSession::create([
-            'vehicle_id' => $vehicle->id,
-            'parking_spot_id' => $parkingSpot->id,
-            'start_time' => now(),
-            'end_time' => now()->addHour(),
-        ]);
 
         $response = [
             'id' => $ticket->id,
             'to_pay' => 0
         ];
-
         return response()->json($response);
-
-
     }
 
     public function notifyEndingSessions(): JsonResponse
