@@ -12,6 +12,11 @@ docker compose build
 docker compose up -d
 ````
 
+#### Start docker containers
+````sh
+docker exec --user www-data laravel-app composer install
+````
+
 #### Create .env file base on .env.example
 ````sh
 cp scripts/src/.env.example scripts/src/.env
