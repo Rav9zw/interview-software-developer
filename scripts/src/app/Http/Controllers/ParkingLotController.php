@@ -8,7 +8,6 @@ use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
 use App\Models\Vehicle;
 use App\Notifications\ParkingSessionEnding;
-use App\Services\ParkingSessionService;
 use app\Services\ParkingSpotService;
 use App\Services\TicketValidatorService;
 use Illuminate\Http\Request;
@@ -39,14 +38,8 @@ class ParkingLotController extends Controller
         if (isset($result['error'])) {
             return response()->json(['error' => $result['error']], $result['status']);
         }
-        $parkingSpot = ParkingSpot::where('spot_number', $request->spot_number)->firstOrFail();
-        $vehicle = Vehicle::where('type', $request->vehicle_type)->firstOrFail();
 
-        $response = $this->parkingSpotService->createSession(
-            $vehicle,
-            $parkingSpot,
-            $request->get('email')
-        );
+        $response = $this->parkingSpotService->createSession($request);
 
         if (isset($response['error'])) {
             return response()->json(['error' => $response['error']], $response['status']);

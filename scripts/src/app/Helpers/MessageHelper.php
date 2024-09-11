@@ -9,7 +9,5 @@ class MessageHelper
     const ERROR_PARKING_SPOT_NOT_FOUND = 'Parking spot not found.';
     const ERROR_VEHICLE_TYPE_NOT_FOUND = 'Vehicle type not found.';
     const NOTIFICATION_SEND = 'Notifications sent';
-
-
-
+    const VALIDATION_FAILED = 'Validation failed';
 }

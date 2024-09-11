@@ -5,36 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c23c4bbd-7b24-451b-a322-20850c0b5636" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/interview-software-developer.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/mysql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mysql/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/.env.testing" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/.env.testing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Helpers/MessageHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Helpers/MessageHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Notifications/ParkingSessionEnding.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Notifications/ParkingSessionEnding.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Http/Requests/CreateTicketRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Http/Requests/CreateTicketRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/BusParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/BusParkingSpotStrategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/CarParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/CarParkingSpotStrategy.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/ParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/ParkingSpotStrategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/AvailabilityValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/AvailabilityValidation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SizeMatchValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SizeMatchValidation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SpotNumberValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SpotNumberValidation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/VehicleTypeValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/VehicleTypeValidation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/database/migrations/2024_09_05_122112_create_parking_sessions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/database/migrations/2024_09_05_122112_create_parking_sessions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Unit/UserTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +73,7 @@
       <updated>1725895208882</updated>
       <workItem from="1725895209910" duration="9866000" />
       <workItem from="1725975175955" duration="23757000" />
+      <workItem from="1726048851336" duration="3992000" />
     </task>
     <servers />
   </component>

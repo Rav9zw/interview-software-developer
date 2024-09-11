@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Helpers\MessageHelper;
 use App\Models\Vehicle;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -43,7 +44,7 @@ class CreateTicketRequest extends FormRequest
 
         throw new HttpResponseException(
             response()->json([
-                'message' => 'Validation failed',
+                'message' => MessageHelper::VALIDATION_FAILED,
                 'errors' => $errors->messages()
             ], 422)
         );

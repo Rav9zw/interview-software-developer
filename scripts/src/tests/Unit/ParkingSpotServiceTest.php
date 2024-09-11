@@ -70,18 +70,18 @@ class ParkingSpotServiceTest extends TestCase
 
     public function testGetBoardWhenNoEmptySpots()
     {
-        $this->motorcycleStrategy
-            ->shouldReceive('getAvailableSpotsForVehicleType')
-            ->andReturn([]);
+        $strategies = [
+            'motorcycle' => $this->motorcycleStrategy,
+            'car' => $this->carStrategy,
+            'bus' => $this->busStrategy
+        ];
 
-        $this->carStrategy
-            ->shouldReceive('getAvailableSpotsForVehicleType')
-            ->andReturn([]);
-
-        $this->busStrategy
-            ->shouldReceive('getAvailableSpotsForVehicleType')
-            ->andReturn([]);
-
+        foreach ($strategies as $name => $strategy) {
+            $strategy->shouldReceive('getName')
+                ->andReturn($name);
+            $strategy->shouldReceive('getAvailableSpotsForVehicleType')
+                ->andReturn([]);
+        }
 
         $board = $this->parkingSpotService->getBoard();
         $this->assertEmpty($board);

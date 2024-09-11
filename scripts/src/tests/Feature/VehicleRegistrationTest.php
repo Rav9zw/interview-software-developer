@@ -6,6 +6,7 @@ use App\Helpers\MessageHelper;
 use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
 use App\Models\Vehicle;
+use Database\Seeders\ParkingSpotSeeder;
 use Database\Seeders\VehicleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -118,6 +119,22 @@ class VehicleRegistrationTest extends TestCase
         })->get();
 
         $this->assertEmpty($sessions);
+
+    }
+
+    public function testFailToCreateSessionWithIncorrectRequest(){
+
+        $this->seed(VehicleSeeder::class);
+        $this->seed(ParkingSpotSeeder::class);
+
+        $this->postJson('/api/parking_lot/ticket', [
+            'vehicle_type' => 1,
+            'spot_number' => '1.01',
+            'email' => 'test@gmail.com'
+        ])->assertStatus(422)
+            ->assertJson([
+                'message' => MessageHelper::VALIDATION_FAILED
+            ]);;;
 
     }
 

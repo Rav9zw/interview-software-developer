@@ -45,13 +45,16 @@ class ParkingSpotService
     }
 
 
-    public function createSession(Vehicle $vehicle, ParkingSpot $parkingSpot, string $email): array
+    public function createSession($request): array
     {
+        $parkingSpot = ParkingSpot::where('spot_number', $request->spot_number)->firstOrFail();
+        $vehicle = Vehicle::where('type', $request->vehicle_type)->firstOrFail();
+
         try {
             $ticket = ParkingSession::create([
                 'vehicle_id' => $vehicle->id,
                 'parking_spot_id' => $parkingSpot->id,
-                'email' => $email,
+                'email' => $request->get('email'),
                 'start_time' => now(),
                 'end_time' => now()->modify('+1 hour'),
             ]);
@@ -68,7 +71,7 @@ class ParkingSpotService
         $availableSpots = $this->getAllAvailableSpots()->toArray();
         $board = [];
 
-        foreach ($this->vehicleStrategies as  $vehicleStrategy) {
+        foreach ($this->vehicleStrategies as $vehicleStrategy) {
             $board[$vehicleStrategy->getName()] = $vehicleStrategy->getAvailableSpotsForVehicleType($availableSpots);
         }
 
@@ -90,8 +93,6 @@ class ParkingSpotService
                 $query->where('end_time', '>', now());
             })->exists();
     }
-
-
 
 
 }

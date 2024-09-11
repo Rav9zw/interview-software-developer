@@ -5,7 +5,8 @@ namespace App\Services\ParkingStrategies;
 use App\Models\Vehicle;
 
 class MotorcycleParkingSpotStrategy implements ParkingSpotStrategy
-{    protected $vehicle;
+{
+    protected $vehicle;
     const NAME = 'motorcycle';
 
     public function __construct()

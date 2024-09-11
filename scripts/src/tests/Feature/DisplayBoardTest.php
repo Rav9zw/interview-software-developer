@@ -55,6 +55,7 @@ class DisplayBoardTest extends TestCase
         $response = $this->getJson('/api/parking_lot/board');
 
         $this->assertEquals($expectedBoard, $response->json());
+
     }
 
 
@@ -90,7 +91,7 @@ class DisplayBoardTest extends TestCase
         }
 
 
-        $parkingSpot = ParkingSpot::where('spot_size', 1)->inRandomOrder()->first();
+        $parkingSpot = ParkingSpot::where('spot_size', 1)->first();
         $vehicle = Vehicle::where('size', 1)->first();
         $start = now();
         $end = clone $start;
