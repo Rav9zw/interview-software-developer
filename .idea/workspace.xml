@@ -6,14 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c23c4bbd-7b24-451b-a322-20850c0b5636" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Helpers/MessageHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Helpers/MessageHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Http/Requests/CreateTicketRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Http/Requests/CreateTicketRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +71,7 @@
       <workItem from="1725895209910" duration="9866000" />
       <workItem from="1725975175955" duration="23757000" />
       <workItem from="1726048851336" duration="3992000" />
+      <workItem from="1726053322572" duration="8124000" />
     </task>
     <servers />
   </component>

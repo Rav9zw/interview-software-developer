@@ -6,6 +6,7 @@ services:
       context: .
       args:
         TIMEZONE: Europe/Warsaw
+    container_name: laravel-app
     restart: on-failure
     volumes:
       - ./scripts/src:/var/www/html

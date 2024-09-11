@@ -21,17 +21,16 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
     && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
     && "date"
 
-WORKDIR /var/www/html
 COPY scripts/src /var/www/html
-RUN cp .env.example .env
+
+WORKDIR /var/www/html
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN composer install
-RUN php artisan key:generate
 RUN chown -R www-data:www-data /var/www/html/
-RUN chown  www-data:www-data .env
+
 
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf && \
     sed -i 's/:80>/:8080>/' /etc/apache2/sites-available/000-default.conf
