@@ -5,6 +5,7 @@ namespace App\Services\TicketValidationStrategies;
 
 use App\Http\Requests\CreateTicketRequest;
 use App\Models\Vehicle;
+use App\Helpers\MessageHelper;
 
 class VehicleTypeValidation implements ValidationStrategy
 {
@@ -12,7 +13,7 @@ class VehicleTypeValidation implements ValidationStrategy
     {
         $vehicle = Vehicle::where('type', $request->vehicle_type)->first();
         if (!$vehicle) {
-            return ['error' => 'Vehicle type not found.', 'status' => 404];
+            return ['error' => MessageHelper::ERROR_VEHICLE_TYPE_NOT_FOUND, 'status' => 404];
         }
         return [];
 

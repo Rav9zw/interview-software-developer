@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace app\Services;
 
 use App\Http\Requests\CreateTicketRequest;
 
 class TicketValidatorService
 {
-
-
     private array $ticketValidationStrategies;
 
     public function __construct($ticketValidationStrategies)
@@ -15,7 +13,7 @@ class TicketValidatorService
         $this->ticketValidationStrategies = $ticketValidationStrategies;
     }
 
-    public function validateTicket(CreateTicketRequest $request)
+    public function validateTicket(CreateTicketRequest $request): array
     {
         foreach ($this->ticketValidationStrategies as $strategy) {
             $result = $strategy->validate($request);

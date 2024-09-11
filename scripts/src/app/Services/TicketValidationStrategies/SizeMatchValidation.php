@@ -5,7 +5,7 @@ namespace app\Services\TicketValidationStrategies;
 use App\Http\Requests\CreateTicketRequest;
 use App\Models\ParkingSpot;
 use App\Models\Vehicle;
-
+use App\Helpers\MessageHelper;
 
 class SizeMatchValidation implements ValidationStrategy
 {
@@ -15,7 +15,7 @@ class SizeMatchValidation implements ValidationStrategy
         $vehicle = Vehicle::where('type', $request->vehicle_type)->firstOrFail();
 
         if ($parkingSpot->spot_size !== $vehicle->size) {
-            return ['error' => 'Parking spot does not match the Vehicle type.', 'status' => 422];
+            return ['error' => MessageHelper::ERROR_PARKING_SPOT_DOES_NOT_MATCH_VEHICLE_TYPE, 'status' => 422];
         }
         return [];
     }

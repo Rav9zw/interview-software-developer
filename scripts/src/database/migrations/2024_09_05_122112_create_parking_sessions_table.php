@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->foreignId('vehicle_id')->constrained('vehicles');
             $table->foreignId('parking_spot_id')->constrained('parking_spots');
             $table->string('email');
+            $table->boolean('notification_sent')->default(false);
             $table->timestamp('start_time');
             $table->timestamp('end_time')->nullable();
             $table->timestamps();

@@ -2,10 +2,13 @@
 
 namespace app\Services;
 
+use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
+use App\Models\Vehicle;
 use App\Services\ParkingStrategies\BusParkingSpotStrategy;
 use App\Services\ParkingStrategies\CarParkingSpotStrategy;
 use App\Services\ParkingStrategies\MotorcycleParkingSpotStrategy;
+use Illuminate\Support\Facades\Log;
 
 class ParkingSpotService
 {
@@ -41,22 +44,41 @@ class ParkingSpotService
         return $board;
     }
 
-    private function getAvailableByType(): array
+
+    public function createSession(Vehicle $vehicle, ParkingSpot $parkingSpot, string $email): array
+    {
+        try {
+            $ticket = ParkingSession::create([
+                'vehicle_id' => $vehicle->id,
+                'parking_spot_id' => $parkingSpot->id,
+                'email' => $email,
+                'start_time' => now(),
+                'end_time' => now()->modify('+1 hour'),
+            ]);
+
+            return ['id' => $ticket->id, 'to_pay' => 0];
+        } catch (\Exception $e) {
+            Log::error('Session Create error: ' . $e->getMessage());
+            return ['error' => 'Error creating parking session', 'status' => 500];
+        }
+    }
+
+    public function getAvailableByType(): array
     {
         $availableSpots = $this->getAllAvailableSpots()->toArray();
         $board = [];
 
-        foreach ($this->vehicleStrategies as $vehicleType => $vehicleStrategy) {
-            $board[$vehicleType] = $vehicleStrategy->getAvailableSpotsForVehicleType($availableSpots);
+        foreach ($this->vehicleStrategies as  $vehicleStrategy) {
+            $board[$vehicleStrategy->getName()] = $vehicleStrategy->getAvailableSpotsForVehicleType($availableSpots);
         }
 
         return $board;
     }
 
-    private function getAllAvailableSpots()
+    public function getAllAvailableSpots()
     {
         return ParkingSpot::whereDoesntHave('parkingSession', function ($query) {
-            $query->whereNull('end_time');
+            $query->where('end_time', '>', now());
         })->get();
     }
 
@@ -68,6 +90,9 @@ class ParkingSpotService
                 $query->where('end_time', '>', now());
             })->exists();
     }
+
+
+
 
 }
 

@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Helpers\MessageHelper;
 use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
 use App\Models\Vehicle;
 use Database\Seeders\VehicleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+
 
 class VehicleRegistrationTest extends TestCase
 {
@@ -57,7 +59,10 @@ class VehicleRegistrationTest extends TestCase
             'vehicle_type' => $vehicle->type,
             'spot_number' => $parkingSpot->spot_number,
             'email' => 'test@gmail.com'
-        ])->assertStatus(400);
+        ])->assertStatus(400)
+            ->assertJson([
+                'error' => MessageHelper::ERROR_PARKING_SPOT_OCCUPIED
+            ]);;
 
 
         $sessions = ParkingSession::whereHas('parkingSpot', function ($query) use ($parkingSpot) {
@@ -68,7 +73,7 @@ class VehicleRegistrationTest extends TestCase
     }
 
 
-    public function testCanCreateSessionForVehicleOnNotMatchingSize()
+    public function testCanCreateSessionOnNotMatchingSize()
     {
         $this->seed(VehicleSeeder::class);
         $parkingSpot = ParkingSpot::factory()->create([
@@ -82,14 +87,39 @@ class VehicleRegistrationTest extends TestCase
             'vehicle_type' => $vehicle->type,
             'spot_number' => $parkingSpot->spot_number,
             'email' => 'test@gmail.com'
-        ])->assertStatus(422);
+        ])->assertStatus(422)
+            ->assertJson([
+                'error' => MessageHelper::ERROR_PARKING_SPOT_DOES_NOT_MATCH_VEHICLE_TYPE
+            ]);;;
 
         $sessions = ParkingSession::whereHas('parkingSpot', function ($query) use ($parkingSpot) {
             $query->where('spot_number', $parkingSpot->spot_number);
+        })->get();
+        $this->assertEmpty($sessions);
+
+    }
+
+    public function testCanCreateSessionWhenSpotDoesntExit()
+    {
+        $this->seed(VehicleSeeder::class);
+
+        $vehicle = Vehicle::where('size', 2)->first();
+        $this->postJson('/api/parking_lot/ticket', [
+            'vehicle_type' => $vehicle->type,
+            'spot_number' => '1.01',
+            'email' => 'test@gmail.com'
+        ])->assertStatus(404)
+            ->assertJson([
+                'error' => MessageHelper::ERROR_PARKING_SPOT_NOT_FOUND
+            ]);;;
+
+        $sessions = ParkingSession::whereHas('parkingSpot', function ($query) {
+            $query->where('spot_number', '1.01');
         })->get();
 
         $this->assertEmpty($sessions);
 
     }
+
 
 }

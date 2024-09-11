@@ -36,7 +36,6 @@ class ParkingSessionEnding extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-
         return (new MailMessage)
             ->subject('Your parking session is ending soon')
             ->line('Your parking session for vehicle ' . $this->session->vehicle->type . ' is ending in 15 minutes.')

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c23c4bbd-7b24-451b-a322-20850c0b5636" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/interview-software-developer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mysql/init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/.env.testing" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/.env.testing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Http/Controllers/ParkingLotController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Notifications/ParkingSessionEnding.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Notifications/ParkingSessionEnding.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingSpotService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/BusParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/BusParkingSpotStrategy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/CarParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/CarParkingSpotStrategy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/MotorcycleParkingSpotStrategy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/ParkingSpotStrategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/ParkingStrategies/ParkingSpotStrategy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/AvailabilityValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/AvailabilityValidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SizeMatchValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SizeMatchValidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SpotNumberValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/SpotNumberValidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/VehicleTypeValidation.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidationStrategies/VehicleTypeValidation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/app/Services/TicketValidatorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/database/migrations/2024_09_05_122112_create_parking_sessions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/database/migrations/2024_09_05_122112_create_parking_sessions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/DisplayBoardTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Feature/VehicleRegistrationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/src/tests/Unit/ParkingSpotServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/src/tests/Unit/UserTest.php" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2lq6M9VlEi7shiOYyd9005oJnea" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu-20.04\home\rschneid\isd_test" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c23c4bbd-7b24-451b-a322-20850c0b5636" name="Changes" comment="" />
+      <created>1725895208882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725895208882</updated>
+      <workItem from="1725895209910" duration="9866000" />
+      <workItem from="1725975175955" duration="23757000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

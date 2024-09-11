@@ -6,6 +6,9 @@ namespace tests\Unit;
 use App\Models\ParkingSession;
 use App\Models\ParkingSpot;
 use app\Services\ParkingSpotService;
+use app\Services\ParkingStrategies\BusParkingSpotStrategy;
+use app\Services\ParkingStrategies\CarParkingSpotStrategy;
+use App\Services\ParkingStrategies\MotorcycleParkingSpotStrategy;
 use Database\Seeders\VehicleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mockery;
@@ -15,18 +18,24 @@ class ParkingSpotServiceTest extends TestCase
 {
     use RefreshDatabase;
 
-    private ParkingSpotService $parkingSpotService;
+    protected $motorcycleStrategy;
+    protected $carStrategy;
+    protected $busStrategy;
+    protected ParkingSpotService $parkingSpotService;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $motorcycleStrategy = Mockery::mock('App\Services\ParkingStrategies\MotorcycleParkingSpotStrategy');
-        $carStrategy = Mockery::mock('App\Services\ParkingStrategies\CarParkingSpotStrategy');
-        $busStrategy = Mockery::mock('App\Services\ParkingStrategies\BusParkingSpotStrategy');
+        $this->motorcycleStrategy = Mockery::mock(MotorcycleParkingSpotStrategy::class);
+        $this->carStrategy = Mockery::mock(CarParkingSpotStrategy::class);
+        $this->busStrategy = Mockery::mock(BusParkingSpotStrategy::class);
 
-        $this->parkingSpotService = new ParkingSpotService($motorcycleStrategy, $carStrategy, $busStrategy);
-
+        $this->parkingSpotService = new ParkingSpotService(
+            $this->motorcycleStrategy,
+            $this->carStrategy,
+            $this->busStrategy
+        );
     }
 
     public function testCheckAvailabilityByNumberSessionExist()
@@ -58,5 +67,25 @@ class ParkingSpotServiceTest extends TestCase
 
         $this->assertTrue($this->parkingSpotService->checkAvailabilityByNumber('0.02'));
     }
+
+    public function testGetBoardWhenNoEmptySpots()
+    {
+        $this->motorcycleStrategy
+            ->shouldReceive('getAvailableSpotsForVehicleType')
+            ->andReturn([]);
+
+        $this->carStrategy
+            ->shouldReceive('getAvailableSpotsForVehicleType')
+            ->andReturn([]);
+
+        $this->busStrategy
+            ->shouldReceive('getAvailableSpotsForVehicleType')
+            ->andReturn([]);
+
+
+        $board = $this->parkingSpotService->getBoard();
+        $this->assertEmpty($board);
+    }
+
 
 }

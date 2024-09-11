@@ -4,6 +4,7 @@ namespace App\Services\TicketValidationStrategies;
 
 use App\Http\Requests\CreateTicketRequest;
 use App\Services\ParkingSpotService;
+use App\Helpers\MessageHelper;
 
 class AvailabilityValidation implements ValidationStrategy
 {
@@ -18,7 +19,7 @@ class AvailabilityValidation implements ValidationStrategy
     {
         $isAvailable = $this->parkingSpotService->checkAvailabilityByNumber($request->spot_number);
         if (!$isAvailable) {
-            return ['error' => 'Parking spot is already occupied.', 'status' => 400];
+            return ['error' => MessageHelper::ERROR_PARKING_SPOT_OCCUPIED, 'status' => 400];
         }
         return [];
     }
